@@ -20,17 +20,46 @@
 }
 
 .pizza-photo {
+  position: relative;
   width: 50%;
   background: #F4F4F4;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-img {
-  width: 120px;
-  display: block;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .badge {
+    position: absolute;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .vegetarian {
+    left: 3px;
+    background-color: #4CAF50; // зелёный
+  }
+
+  .spicy {
+    left: 3px;
+    background-color: #E00202; // красный
+  }
 }
 
 .pizza-info {
@@ -73,7 +102,6 @@ img {
 }
 
 .pizza-order {
-  background: #E00202;
   border: none;
   border-radius: 33554400px;
   width: 54px;
@@ -81,10 +109,55 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  position: relative;
+
+  &.active {
+    background-color: #F4F4F4;
+    gap: 4px;
+    width: 88px;
+    height: 40px;
+  }
+
+  &.default {
+    background-color: #E00202;
+  }
+
+  .cart-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .counter-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    color: #0A0A0A;
+  }
+
+  .counter-btn {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 4px;
+    user-select: none;
+  }
+
+  .counter-number {
+    text-align: center;
+    font-weight: bold;
+    color: #0A0A0A;
+    min-width: 14px;
+  }
+
+  .counter-icon {
+    width: 16px;
+    height: 16px;
+    gap: 8px;
+  }
 }
 
-.cart-icon {
-  width: 16px;
-  height: 16px;
-}
+
+
 
