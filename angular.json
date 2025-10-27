@@ -8,7 +8,14 @@
       "schematics": {
         "@ionic/angular-toolkit:page": {
           "styleext": "scss",
-          "standalone": true
+          "standalone": true,
+          "skipTests": true
+        },
+        "@ionic/angular-toolkit:component": {
+          "skipTests": true
+        },
+        "@ionic/angular-toolkit:service": {
+          "skipTests": true
         }
       },
       "root": "",
