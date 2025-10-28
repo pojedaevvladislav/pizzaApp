@@ -3,13 +3,14 @@ import {IonHeader, IonToolbar, IonTitle, IonContent, IonIcon} from '@ionic/angul
 import {PizzaService} from "../data/services/pizza";
 import {PizzaAppInterface} from "../data/interface/pizza-app.interface";
 import {CommonModule} from "@angular/common";
+import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, CommonModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, CommonModule, NavBarComponent],
 })
 export class HomePage implements OnInit{
 
