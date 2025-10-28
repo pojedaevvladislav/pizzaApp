@@ -7,14 +7,14 @@
       "projectType": "application",
       "schematics": {
         "@ionic/angular-toolkit:page": {
-          "styleext": "scss",
+          "styles": "scss",
           "standalone": true,
           "skipTests": true
         },
-        "@ionic/angular-toolkit:component": {
+        "@schematics/angular:component": {
           "skipTests": true
         },
-        "@ionic/angular-toolkit:service": {
+        "@schematics/angular:service": {
           "skipTests": true
         }
       },

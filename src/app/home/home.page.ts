@@ -4,6 +4,7 @@ import {PizzaService} from "../data/services/pizza";
 import {PizzaAppInterface} from "../data/interface/pizza-app.interface";
 import {CommonModule} from "@angular/common";
 import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,8 @@ export class HomePage implements OnInit{
   private pizzaService = inject(PizzaService);
 
   cartCount: { [pizzaId: number]: number } = {};
+
+  private router = inject(Router);
 
   constructor() {}
 
@@ -39,4 +42,7 @@ export class HomePage implements OnInit{
     if (this.cartCount[pizzaId] > 0) this.cartCount[pizzaId]--;
   }
 
+  openPizzaDetails(pizzaId: number) {
+    this.router.navigate(['/pizza', pizzaId])
+  }
 }

@@ -1,7 +1,9 @@
 <app-nav-bar></app-nav-bar>
 <ion-content>
   <div class="pizza-list__wrapper">
-    <div class="pizza-list__container" *ngFor="let pizza of pizzas">
+    <div class="pizza-list__container"
+         *ngFor="let pizza of pizzas"
+         (click)="openPizzaDetails( pizza.pizzaId)">
       <div class="pizza-photo">
         <img [src]="'assets/images/' + pizza.imageFileName" alt="">
         <span class="badge vegetarian" *ngIf="pizza.isVegetarian">
