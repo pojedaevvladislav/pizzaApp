@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
-<div class="pizza-list__wrapper">
-    <div class="pizza-list__container"*ngFor="let pizza of pizzas">
+<ion-content>
+  <div class="pizza-list__wrapper">
+    <div class="pizza-list__container" *ngFor="let pizza of pizzas">
       <div class="pizza-photo">
         <img [src]="'assets/images/' + pizza.imageFileName" alt="">
         <span class="badge vegetarian" *ngIf="pizza.isVegetarian">
@@ -19,19 +20,23 @@
         <div class="pizza__price-btn">
           <span class="pizza-price">{{ pizza.price }} lei</span>
 
-          <button class="pizza-order" (click)="cartCount[pizza.pizzaId] = cartCount[pizza.pizzaId] ? cartCount[pizza.pizzaId] + 1 : 1"
+          <button class="pizza-order"
+                  (click)="cartCount[pizza.pizzaId] = cartCount[pizza.pizzaId] ? cartCount[pizza.pizzaId] + 1 : 1"
                   [ngClass]="cartCount[pizza.pizzaId] > 0 ? 'active' : 'default'">
             <ng-container *ngIf="cartCount[pizza.pizzaId] === 0">
               <img src="assets/icon/cart.svg" class="cart-icon" alt="Add to cart">
             </ng-container>
 
             <ng-container *ngIf="cartCount[pizza.pizzaId] > 0" class="counter-wrapper">
-              <img src="assets/icon/minus.svg" class="counter-icon" (click)="decrease(pizza.pizzaId); $event.stopPropagation()" alt="Minus">
+              <img src="assets/icon/minus.svg" class="counter-icon"
+                   (click)="decrease(pizza.pizzaId); $event.stopPropagation()" alt="Minus">
               <span class="counter-number">{{ cartCount[pizza.pizzaId] }}</span>
-              <img src="assets/icon/plus.svg" class="counter-icon" (click)="addToCart(pizza.pizzaId); $event.stopPropagation()" alt="Plus">
+              <img src="assets/icon/plus.svg" class="counter-icon"
+                   (click)="addToCart(pizza.pizzaId); $event.stopPropagation()" alt="Plus">
             </ng-container>
           </button>
         </div>
       </div>
     </div>
-</div>
+  </div>
+</ion-content>
