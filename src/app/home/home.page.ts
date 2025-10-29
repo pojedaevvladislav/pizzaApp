@@ -1,5 +1,5 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
-import {IonHeader, IonToolbar, IonTitle, IonContent, IonIcon} from '@ionic/angular/standalone';
+import {IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, NavController} from '@ionic/angular/standalone';
 import {PizzaService} from "../data/services/pizza";
 import {PizzaAppInterface} from "../data/interface/pizza-app.interface";
 import {CommonModule} from "@angular/common";
@@ -21,7 +21,7 @@ export class HomePage implements OnInit{
 
   cartCount: { [pizzaId: number]: number } = {};
 
-  private router = inject(Router);
+  private navController = inject(NavController);
 
   constructor() {}
 
@@ -34,15 +34,28 @@ export class HomePage implements OnInit{
     });
   }
 
-  addToCart(pizzaId: number): void {
+  handleCartClick(pizzaId: number, event: Event): void {
+    event.stopPropagation();
+    this.cartCount[pizzaId] = this.cartCount[pizzaId]
+      ? this.cartCount[pizzaId] + 1
+      : 1;
+  }
+
+  addToCart(pizzaId: number, event: Event): void {
+    event.stopPropagation()
     this.cartCount[pizzaId]++;
   }
 
-  decrease(pizzaId: number): void {
-    if (this.cartCount[pizzaId] > 0) this.cartCount[pizzaId]--;
+  decrease(pizzaId: number, event: Event): void {
+    event.stopPropagation();
+    if (this.cartCount[pizzaId] > 1)  {
+      this.cartCount[pizzaId]--;
+    } else {
+      this.cartCount[pizzaId] = 0;
+    }
   }
 
   openPizzaDetails(pizzaId: number) {
-    this.router.navigate(['/pizza', pizzaId])
+    this.navController.navigateForward('/pizza/' + pizzaId);
   }
 }

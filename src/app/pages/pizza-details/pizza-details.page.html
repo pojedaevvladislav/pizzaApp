@@ -1,10 +1,24 @@
 <ion-content *ngIf="pizza">
   <div class="pizza-details__main">
+    <div class="pizza-details__close-btn">
+      <ion-button fill="clear" (click)="closePage()">
+        <img class="close-btn" src="assets/icon/close.svg" alt="">
+      </ion-button>
+    </div>
     <div class="pizza-details__photo">
       <img src="assets/images/broccolo-1.png" alt="">
     </div>
     <div class="pizza-details__wrapper">
-      <div class="pizza-details__label"></div>
+      <div class="pizza-details__label-wrapper">
+        <div class="label-vegetarian pizza-details__label" *ngIf="pizza?.isVegetarian">
+          <img src="assets/icon/leaf.svg" alt="">
+          <span>Vegan</span>
+        </div>
+        <div class="label-spice pizza-details__label" *ngIf="pizza?.isSpicy">
+          <img src="assets/icon/flame.svg" alt="">
+          <span>Spicy</span>
+        </div>
+      </div>
       <div class="pizza-details__name-grammage">
         <strong class="pizza-details__name">{{ pizza?.name }}</strong>
         <span class="pizza-details__grammage">{{ pizza?.weight }}g</span>
@@ -41,7 +55,7 @@
           </ion-button>
         </div>
         <div class="pizza-details__price">
-          <ion-button >
+          <ion-button class="pizza-details__add-to-cart">
             <span>Adauga in cos | {{ totalPrice }}lei</span>
           </ion-button>
         </div>

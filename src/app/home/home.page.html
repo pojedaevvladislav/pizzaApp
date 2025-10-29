@@ -23,7 +23,7 @@
           <span class="pizza-price">{{ pizza.price }} lei</span>
 
           <button class="pizza-order"
-                  (click)="cartCount[pizza.pizzaId] = cartCount[pizza.pizzaId] ? cartCount[pizza.pizzaId] + 1 : 1"
+                  (click)="handleCartClick( pizza.pizzaId, $event)"
                   [ngClass]="cartCount[pizza.pizzaId] > 0 ? 'active' : 'default'">
             <ng-container *ngIf="cartCount[pizza.pizzaId] === 0">
               <img src="assets/icon/cart.svg" class="cart-icon" alt="Add to cart">
@@ -31,10 +31,10 @@
 
             <ng-container *ngIf="cartCount[pizza.pizzaId] > 0" class="counter-wrapper">
               <img src="assets/icon/minus.svg" class="counter-icon"
-                   (click)="decrease(pizza.pizzaId); $event.stopPropagation()" alt="Minus">
+                   (click)="decrease(pizza.pizzaId, $event);" alt="Minus">
               <span class="counter-number">{{ cartCount[pizza.pizzaId] }}</span>
               <img src="assets/icon/plus.svg" class="counter-icon"
-                   (click)="addToCart(pizza.pizzaId); $event.stopPropagation()" alt="Plus">
+                   (click)="addToCart(pizza.pizzaId, $event);" alt="Plus">
             </ng-container>
           </button>
         </div>

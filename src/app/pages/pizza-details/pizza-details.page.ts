@@ -8,9 +8,9 @@ import {
   IonHeader, IonIcon,
   IonItem, IonLabel,
   IonTitle,
-  IonToolbar
+  IonToolbar, NavController
 } from '@ionic/angular/standalone';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PizzaAppInterface} from "../../data/interface/pizza-app.interface";
 import {PizzaService} from "../../data/services/pizza";
 
@@ -27,6 +27,7 @@ export class PizzaDetailsPage implements OnInit {
   pizza?: PizzaAppInterface;
   private route = inject(ActivatedRoute)
   private pizzaService = inject(PizzaService);
+  private navController = inject(NavController);
   quantity = 1;
   totalPrice = 0;
 
@@ -62,5 +63,10 @@ export class PizzaDetailsPage implements OnInit {
     if (this.pizza) {
       this.totalPrice = this.pizza!.price * this.quantity;
     }
+  }
+
+  closePage() {
+    this.navController.navigateBack('/home');
+
   }
 }
