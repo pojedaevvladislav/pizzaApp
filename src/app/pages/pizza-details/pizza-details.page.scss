@@ -1,0 +1,193 @@
+ion-content {
+  --background: #fff;
+}
+
+.pizza-details__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+.pizza-details__close-btn {
+  background: var(--nutrition-color);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  .close-btn {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.pizza-details__photo {
+  width: 328px;
+}
+
+.pizza-details__img {
+  width: 100%;
+}
+
+.pizza-details__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-around;
+}
+
+.pizza-details__label {
+  width: 72px;
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 16px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    color: var(--white-color);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 0;
+  }
+}
+
+  .label-vegetarian {
+    background: var(--vegetarian-color);
+  }
+
+  .label-spice {
+    background: var(--red-color);
+  }
+
+.pizza-details__name-grammage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.pizza-details__name{
+  color: var(--pizza-name-color);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.pizza-details__grammage {
+  color: var(--grammage-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+.pizza-details__compound {
+  color: var(--pizza-name-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+ion-accordion {
+  --color: #0A0A0A;
+  background: #F4F4F4;
+  border-radius: 16px;
+
+  ion-item {
+    --background: #F4F4F4;
+    --color: #0A0A0A;
+    --border-radius: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0;
+  }
+
+  .pizza-details__nutritional-value {
+    color: #0A0A0A;
+    background: #F4F4F4;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0;
+  }
+}
+
+.pizza-details__description {
+  color: var(--description-color);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.pizza-details__counter-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pizza-details__counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--nutrition-color);
+  border-radius: 40px;
+  height: 54px;
+}
+
+.quantity {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.pizza-details__price {
+  background: var(--nutrition-color);
+  border-radius: 10px;
+  text-align: center;
+  color: var(--white-color);
+  gap: 4px;
+
+  ion-button {
+    --background: #E00202;
+    --background-activated: #E00202;
+    --background-focused: #E00202;
+    --background-hover: #E00202;
+  }
+
+  span {
+    color: var(--white-color);
+  }
+}
+
+.pizza-details__add-to-cart {
+  border-radius: 60%;
+}

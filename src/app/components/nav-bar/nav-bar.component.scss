@@ -1,0 +1,61 @@
+:host {
+  background: #F4F4F4;
+}
+
+.nav-bar__wrapper {
+  padding: 16px 24px;
+}
+
+.nav-bar__container {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.name-company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.red-name {
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #E00202;
+}
+
+.name-span {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 120%;
+  letter-spacing: 6.5px;
+  color: #0A0A0A;
+}
+
+.nav-bar__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  background: none;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}

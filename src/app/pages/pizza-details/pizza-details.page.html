@@ -1,0 +1,65 @@
+<ion-content *ngIf="pizza">
+  <div class="pizza-details__main">
+    <div class="pizza-details__close-btn">
+      <ion-button fill="clear" (click)="closePage()">
+        <img class="close-btn" src="assets/icon/close.svg" alt="">
+      </ion-button>
+    </div>
+    <div class="pizza-details__photo">
+      <img src="assets/images/broccolo-1.png" alt="">
+    </div>
+    <div class="pizza-details__wrapper">
+      <div class="pizza-details__label-wrapper">
+        <div class="label-vegetarian pizza-details__label" *ngIf="pizza?.isVegetarian">
+          <img src="assets/icon/leaf.svg" alt="">
+          <span>Vegan</span>
+        </div>
+        <div class="label-spice pizza-details__label" *ngIf="pizza?.isSpicy">
+          <img src="assets/icon/flame.svg" alt="">
+          <span>Spicy</span>
+        </div>
+      </div>
+      <div class="pizza-details__name-grammage">
+        <strong class="pizza-details__name">{{ pizza?.name }}</strong>
+        <span class="pizza-details__grammage">{{ pizza?.weight }}g</span>
+      </div>
+      <div class="pizza-details__compound-wrapper">
+        <span class="pizza-details__compound">{{ pizza?.ingredients }}</span>
+      </div>
+      <ion-accordion-group>
+        <ion-accordion class="main-accordion" value="first">
+          <ion-item slot="header">
+            <ion-label>Valori nutritive</ion-label>
+          </ion-item>
+          <div class="ion-padding pizza-details__nutritional-value" slot="content">
+            <span>Energie</span>
+            <span>Grasimi</span>
+            <span>Proteine</span>
+            <span>Carbohidrati</span>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+      <div class="pizza-details__description">
+      <span>
+        O pizza cremoasă și ușoară, perfectă pentru iubitorii de legume coapte și tofu.
+      </span>
+      </div>
+      <div class="pizza-details__counter-btn">
+        <div class="pizza-details__counter">
+          <ion-button fill="clear" (click)="decreaseQuantity()">
+            <img src="assets/icon/minus.svg" alt="">
+          </ion-button>
+          <span class="quantity">{{ quantity }}</span>
+          <ion-button fill="clear" (click)="increaseQuantity()">
+            <img src="assets/icon/plus.svg" alt="">
+          </ion-button>
+        </div>
+        <div class="pizza-details__price">
+          <ion-button class="pizza-details__add-to-cart">
+            <span>Adauga in cos | {{ totalPrice }}lei</span>
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
