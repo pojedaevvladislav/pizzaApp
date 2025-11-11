@@ -1,0 +1,45 @@
+<ion-content *ngIf="order">
+  <div class="status-order__wrapper">
+    <div class="status-order__btn-close" (click)="goToMyOrdersPage()">
+      <button class="status-close-btn">
+        <img src="assets/icon/close.svg" alt="">
+      </button>
+    </div>
+    <div class="status-order__container">
+      <div class="status-order__icon-message">
+        <div class="icon-success__wrapper">
+          <img class="icon-success" src="assets/icon/succes.svg" alt="">
+        </div>
+        <div class="message__wrapper">
+          <strong class="message-order">{{ order.status }}</strong>
+          <span class="message-delivery">
+            Comanda ta este în curs de pregătire! Livrarea va ajunge in aproximativ 45 minute.
+          </span>
+        </div>
+      </div>
+      <div class="status-order__table-order" >
+        <div class="status-order__produse status-order__align-right" *ngFor="let item of groupedPizzas">
+          <span class="left-colon-span">Produse:</span>
+          <strong class="right-colon-strong">{{ item.pizza.name }} x {{ item.quantity }}</strong>
+        </div>
+        <div class="status-order__price status-order__align-right">
+          <span class="left-colon-span">Total:</span>
+          <strong class="right-colon-strong">{{ order.total }}</strong>
+        </div>
+        <div class="status-order__livare status-order__align-right">
+          <span class="left-colon-span">Livrare:</span>
+          <strong class="right-colon-strong">{{ order.deliveryAddress }}</strong>
+        </div>
+        <div class="status-order__plata status-order__align-right">
+          <span class="left-colon-span">Plata:</span>
+          <strong class="right-colon-strong">{{ order.paymentMethod }}</strong>
+        </div>
+      </div>
+      <div class="status-order__btn" (click)="goToMyOrdersPage()">
+        <button class="order-btn">
+          <span>Comenzile mele</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</ion-content>

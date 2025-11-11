@@ -1,6 +1,6 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 import {
   IonAccordion,
   IonAccordionGroup, IonButton,
@@ -13,6 +13,7 @@ import {
 import {ActivatedRoute, Router} from "@angular/router";
 import {PizzaAppInterface} from "../../data/interface/pizza-app.interface";
 import {PizzaService} from "../../data/services/pizza";
+import {Cart} from "../../data/services/cart";
 
 @Component({
   selector: 'app-pizza-details',
@@ -23,50 +24,67 @@ import {PizzaService} from "../../data/services/pizza";
 })
 export class PizzaDetailsPage implements OnInit {
 
-  pizzas: PizzaAppInterface[] = [];
-  pizza?: PizzaAppInterface;
+  pizza!: PizzaAppInterface;
   private route = inject(ActivatedRoute)
   private pizzaService = inject(PizzaService);
+  private cartService = inject(Cart);
   private navController = inject(NavController);
-  quantity = 1;
+  quantity: number = 1;
   totalPrice = 0;
+  pizzaId!: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.pizzaService.getPizzas().subscribe((pizzas: PizzaAppInterface[]) => {
-      this.pizza = pizzas.find(pizza => pizza.pizzaId === id);
+    const pizzaId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('Pizza ID from route:', pizzaId);
 
-      if (this.pizza) {
-        this.totalPrice = this.pizza.price;
-      } else if (this.pizzas.length) {
-        this.pizza = this.pizzas[0];
-        this.totalPrice = this.pizza.price;
-      }
+    this.pizzaService.getPizzaDetails(pizzaId).subscribe((res: any) => {
+      console.log('Server response:', res);
+      console.log('Server payload:', res.payload);
+
+      this.pizza = { pizzaId, ...res };
+
+      console.log('Pizza object after assignment:', this.pizza);
+
+      this.updateTotalPrice();
     });
+
+    this.updateTotalPrice();
   }
 
   increaseQuantity() {
     this.quantity++;
-    this.updateTotal();
+    this.updateTotalPrice();
   }
 
   decreaseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--;
-      this.updateTotal();
-    }
+    if (this.quantity > 1) this.quantity--;
+    this.updateTotalPrice();
   }
 
-  updateTotal() {
-    if (this.pizza) {
-      this.totalPrice = this.pizza!.price * this.quantity;
+  addToCart() {
+    const userId = Number(localStorage.getItem('userId'));
+    const pizzaId = this.pizza?.pizzaId; // берем именно из payload
+    const quantity = this.quantity;
+
+    console.log('Добавление в корзину:', { userId, pizzaId, quantity });
+
+    this.pizzaService.addPizzaToCart(userId, pizzaId, quantity).subscribe({
+      next: (res) => console.log('Pizza added to cart:', res),
+      error: (err) => console.log('Error adding pizza to cart:', err)
+    });
+  }
+
+
+  updateTotalPrice() {
+    if (this.pizza?.price) {
+      this.totalPrice = this.pizza.price * this.quantity;
     }
   }
 
   closePage() {
     this.navController.navigateBack('/home');
-
   }
 }

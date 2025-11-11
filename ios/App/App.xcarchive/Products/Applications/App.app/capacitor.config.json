@@ -1,0 +1,17 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "pizzaApp",
+	"webDir": "www",
+	"plugins": {
+		"StatusBar": {
+			"style": "light",
+			"backgroundColor": "#F4F4F4"
+		}
+	},
+	"packageClassList": [
+		"AppPlugin",
+		"HapticsPlugin",
+		"KeyboardPlugin",
+		"StatusBarPlugin"
+	]
+}

@@ -121,6 +121,10 @@ ion-accordion {
     letter-spacing: 0;
   }
 
+  ion-icon::slotted(icon) {
+    --color: #0A0A0A;
+  }
+
   .pizza-details__nutritional-value {
     color: #0A0A0A;
     background: #F4F4F4;
@@ -171,7 +175,6 @@ ion-accordion {
 
 .pizza-details__price {
   background: var(--nutrition-color);
-  border-radius: 10px;
   text-align: center;
   color: var(--white-color);
   gap: 4px;

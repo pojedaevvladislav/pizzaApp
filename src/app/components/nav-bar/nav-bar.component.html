@@ -1,23 +1,36 @@
 <ion-header>
-    <div class="nav-bar__wrapper">
-        <div class="nav-bar__container">
-            <div class="logo-name">
-                <div class="icon-logo">
-                    <img src="assets/icon/pizza-logo.svg" alt="">
-                </div>
-                <div class="name-company">
-                    <strong class="red-name">QUATRO</strong>
-                    <span class="name-span">PIZZA</span>
-                </div>
-            </div>
-            <div class="nav-bar__btns">
-                <button class="basket-icon btn">
-                    <img class="nav-icon" src="assets/icon/basket.svg" alt="">
-                </button>
-                <button class="login-icon btn">
-                    <img class="nav-icon" src="assets/icon/login.svg" alt="">
-                </button>
-            </div>
+  <div class="nav-bar__wrapper">
+    <div class="nav-bar__container" (click)="openCartPage()">
+      <div class="left-side">
+        <button class="nav-icon btn" *ngIf="showBackButton" (click)="goBack()">
+          <img src="../../../assets/icon/arrow-left.svg" alt="Back">
+        </button>
+      </div>
+      <div class="logo-name" *ngIf="showLogo">
+        <div class="icon-logo">
+          <img src="assets/icon/pizza-logo.svg" alt="">
         </div>
+        <div class="name-company">
+          <strong class="red-name">QUATRO</strong>
+          <span class="name-span">PIZZA</span>
+        </div>
+      </div>
+      <div class="nav-bar__btns">
+        <div class="basket-wrapper" *ngIf="showCartButton">
+          <button class="basket-icon btn" (click)="openCartPage()">
+            <img class="nav-icon" src="assets/icon/basket.svg" alt="">
+          </button>
+          <div class="basket-counter" *ngIf="totalItems > 0">
+            {{ totalItems }}
+          </div>
+        </div>
+        <button class="login-icon btn" (click)="openLoginPage()" *ngIf="showLoginButton">
+          <img class="nav-icon" src="assets/icon/user.svg" alt="">
+        </button>
+        <button class="btn" (click)="onLogout()" *ngIf="showLogoutButton">
+          <img class="nav-icon" src="assets/icon/login.svg" alt="">
+        </button>
+      </div>
     </div>
+  </div>
 </ion-header>

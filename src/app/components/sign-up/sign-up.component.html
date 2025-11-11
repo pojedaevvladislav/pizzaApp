@@ -1,0 +1,16 @@
+<div class="sign-up__wrapper">
+  <div class="sign-up__container">
+    <ion-list>
+      <ion-item>
+        <ion-input [(ngModel)]="email" label="Email" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="password" label="Password" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Username" labelPlacement="floating"></ion-input>
+      </ion-item>
+      <button class="sign-btn" (click)="onRegister()">Sign Up</button>
+    </ion-list>
+  </div>
+</div>

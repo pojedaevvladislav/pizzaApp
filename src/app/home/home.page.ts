@@ -4,7 +4,8 @@ import {PizzaService} from "../data/services/pizza";
 import {PizzaAppInterface} from "../data/interface/pizza-app.interface";
 import {CommonModule} from "@angular/common";
 import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
-import {Router} from "@angular/router";
+import {Cart} from "../data/services/cart";
+import {pizza} from "ionicons/icons";
 
 @Component({
   selector: 'app-home',
@@ -16,46 +17,62 @@ import {Router} from "@angular/router";
 export class HomePage implements OnInit{
 
   pizzas: PizzaAppInterface[] = [];
-
-  private pizzaService = inject(PizzaService);
-
   cartCount: { [pizzaId: number]: number } = {};
 
+  private pizzaService = inject(PizzaService);
+  private cartService = inject(Cart);
   private navController = inject(NavController);
 
   constructor() {}
 
-  @Input() pizza?: PizzaAppInterface;
-
   ngOnInit() {
     this.pizzaService.getPizzas().subscribe(pizzas => {
       this.pizzas = pizzas;
-      pizzas.forEach(pizza => this.cartCount[pizza.pizzaId] = 0);
+      pizzas.forEach(pizza => {
+        if (this.cartCount[pizza.pizzaId] === undefined) {
+          this.cartCount[pizza.pizzaId] = 0;
+        }
+      });
+    });
+
+    this.cartService.cartItems$.subscribe(items => {
+      items.forEach(item => {
+        this.cartCount[item.pizzaId] = item.quantity || 0;
+      });
+      this.pizzas.forEach(pizza => {
+        const exists = items.find(i => i.pizzaId === pizza.pizzaId);
+        if (!exists) {
+          this.cartCount[pizza.pizzaId] = 0;
+        }
+      });
+
+      this.cartCount = {...this.cartCount};
+
+      console.log('CartCount update:', this.cartCount);
     });
   }
 
-  handleCartClick(pizzaId: number, event: Event): void {
-    event.stopPropagation();
-    this.cartCount[pizzaId] = this.cartCount[pizzaId]
-      ? this.cartCount[pizzaId] + 1
-      : 1;
+  addToCart(pizza: PizzaAppInterface, event: Event): void {
+    event?.stopPropagation();
+    this.cartService.addToCart({...pizza});
   }
 
-  addToCart(pizzaId: number, event: Event): void {
-    event.stopPropagation()
-    this.cartCount[pizzaId]++;
+  decrease(pizza: PizzaAppInterface, event: Event): void {
+    event?.stopPropagation();
+    this.cartService.decreaseItem(pizza.pizzaId);
   }
 
-  decrease(pizzaId: number, event: Event): void {
+  handleCartClick(pizza: PizzaAppInterface, event: Event): void {
     event.stopPropagation();
-    if (this.cartCount[pizzaId] > 1)  {
-      this.cartCount[pizzaId]--;
-    } else {
-      this.cartCount[pizzaId] = 0;
-    }
+    this.addToCart(pizza, event);
   }
 
   openPizzaDetails(pizzaId: number) {
     this.navController.navigateForward('/pizza/' + pizzaId);
   }
+
+  get totalItems() {
+    return Object.values(this.cartCount).reduce((a, b) => a + b, 0);
+  }
+
 }

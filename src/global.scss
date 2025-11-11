@@ -13,3 +13,13 @@
 
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+ion-header{
+  padding-top: env(safe-area-inset-top);
+  background-color: var(--ion-color-primary);
+  z-index: 10;
+}
+
+ion-toolbar {
+  padding-top: env(safe-area-inset-top);
+}
+

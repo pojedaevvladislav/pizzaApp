@@ -1,47 +1,59 @@
 import {PizzaAppInterface} from "../interface/pizza-app.interface";
-import {of} from "rxjs";
-import {Injectable} from "@angular/core";
+import {from, map, Observable, of, tap} from "rxjs";
+import {inject, Injectable} from "@angular/core";
+import {ApiService} from "./api-service";
+import {pizza} from "ionicons/icons";
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PizzaService {
-  private pizzaList: PizzaAppInterface[];
-  baseApiUrl = 'http://localhost:3000/api/pizzas'
+  private api = inject(ApiService)
+  // private pizzaList: PizzaAppInterface[];
+
+
+  // private http = inject(HttpClient);
 
   constructor() {
-    this.pizzaList = [{
-      pizzaId: 1,
-      imageFileName: 'broccolo-1.png',
-      name: 'Broccolo',
-      ingredients: 'sos pentru pizza, vinete coapte, dovlecei, ciuperci champinion, usturoi, tofu, frișca vegetală',
-      isVegetarian: true,
-      isSpicy: false,
-      price: 124,
-      weight: 680
-    },{
-      pizzaId: 2,
-      imageFileName: 'broccolo-1.png',
-      name: 'Broccolo',
-      ingredients: 'sos pentru pizza, vinete coapte, dovlecei, ciuperci champinion, usturoi, tofu, frișca vegetală',
-      isVegetarian: false,
-      isSpicy: true,
-      price: 124,
-      weight: 680
-    },{
-      pizzaId: 3,
-      imageFileName: 'broccolo-1.png',
-      name: 'Broccolo',
-      ingredients: 'sos pentru pizza, vinete coapte, dovlecei, ciuperci champinion, usturoi, tofu, frișca vegetală',
-      isVegetarian: false,
-      isSpicy: false,
-      price: 124,
-      weight: 680
-    },];
   }
 
-  getPizzas() {
-    return of(this.pizzaList);
+  getPizzas(): Observable<PizzaAppInterface[]> {
+    return this.api.sendRequest('get_pizza_list').pipe(
+      map((data: any) => data?.payload?.items ?? [])
+    );
+
+    // return this.api.sendRequest('get_pizza_list').subscribe(res => console.log('pizza list:', res));
+  }
+
+  getPizzaDetails(pizzaId: number): Observable<any> {
+    return this.api.sendRequest('get_pizza_details', {pizzaId: pizzaId}).pipe(
+      map((data: any) => data?.payload ?? {})
+    )
+  }
+
+  addPizzaToCart(userId: number, pizzaId: number, quantity: number) {
+    const payload = { userId, pizzaId, quantity };
+    return this.api.sendRequest('add_pizza_to_cart', payload);
   }
 }
+
+
+// getPizzas(): Observable<Array<any>> {
+//   const headers = new HttpHeaders({
+//     'Content-Type': 'application/json',
+//     'Gtk-operation': 'get_pizza_list',
+//   });
+//   const operationData = {
+//     operation: "get_pizza_list",
+//     payload: {}
+//   }
+//   const payload = JSON.stringify(operationData);
+//   console.log(payload)
+//   return this.http.post<any>(`${this.baseApiUrl}`, payload, {headers})
+//     .pipe(map((data) => {
+//       return data?.payload.items;
+//     }));
+// }
+

@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login-page</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login-page</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<app-nav-bar [showBackButton]="false"
+             [showLogo]="false"
+             [showCartButton]="false"
+             [showLoginButton]="false"
+             [showLogoutButton]="false"
+></app-nav-bar>
+<ion-content>
+  <div class="login-page__wrapper">
+    <div class="login-page__container">
+      <div class="login-page__logo-name">
+        <div class="login-page-logo">
+          <img src="assets/icon/pizza-logo.svg" alt="">
+        </div>
+        <div class="login-page-name">
+          <strong class="login-name">QUATRO</strong>
+          <span class="login-span">PIZZA</span>
+        </div>
+      </div>
+      <div class="login-page__tabs">
+        <ion-segment (ionChange)="segmentChanged($event)" value="login">
+          <ion-segment-button value="login">
+            <ion-label>Sign In</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="register">
+            <ion-label>Sign up</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <ion-segment-view>
+          <ion-segment-content id="first" *ngIf="selectedSegment === 'login'">
+            <app-sign-in></app-sign-in>
+          </ion-segment-content>
+          <ion-segment-content id="second" *ngIf="selectedSegment === 'register'">
+            <app-sign-up></app-sign-up>
+          </ion-segment-content>
+        </ion-segment-view>
+      </div>
+    </div>
+  </div>
 </ion-content>

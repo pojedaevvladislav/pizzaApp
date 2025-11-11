@@ -1,0 +1,116 @@
+<app-nav-bar
+  [showBackButton]="true"
+  [showLogo]="false"
+  [showCartButton]="false"
+></app-nav-bar>
+<ion-content>
+  <div class="cart-page__wrapper" *ngIf="cartItems.length > 0; else emptyCart">
+    <div class="cart-section__wrapper">
+      <div class="cart-page__title">
+        <strong class="section-name">Cos</strong>
+      </div>
+      <div class="cart-page__container" *ngFor="let item of cartItems">
+        <div class="cart-page__photo">
+          <img src="assets/images/broccolo-1.png" alt="">
+          <span class="badge vegetarian">
+          <img src="assets/icon/leaf.svg" alt="Vegetarian">
+        </span>
+          <span class="badge spicy">
+          <img src="assets/icon/flame.svg" alt="Spicy">
+        </span>
+        </div>
+        <div class="cart-page__info">
+          <div class="cart-page__pizza-name">
+            <strong class="cart-page__name">{{ item.name }}</strong>
+          </div>
+          <div class="cart-page__remove-btn">
+            <button class="cart-page__remove" (click)="removeFromCart(item.pizzaId, $event)">
+              <img src="assets/icon/close.svg" alt="">
+            </button>
+          </div>
+          <div class="cart-page__counter">
+            <button class="cart-page__counter-btn" (click)="decreaseItem(item.pizzaId)">
+              <img src="assets/icon/minus.svg" alt="">
+            </button>
+            <span class="cart-page__quantity">{{ item.quantity }}</span>
+            <button class="cart-page__counter-btn" (click)="increaseItem(item)">
+              <img src="assets/icon/plus.svg" alt="">
+            </button>
+          </div>
+          <div class="cart-page__price">
+            <span>{{ item.price * (item.quantity || 1) }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="cart-page__total-price-produce">
+        <div class="cart-page__total-produce items-produce">
+          <span class="left-span">Total produce:</span>
+          <strong class="right-strong">496 lei</strong>
+        </div>
+        <div class="cart-page__price-delivery items-produce">
+          <span class="left-span">Livrare:</span>
+          <strong class="right-strong">0 lei</strong>
+        </div>
+        <div class="cart-page__total-price items-produce">
+          <span class="left-span">Total produse:</span>
+          <strong class="main-price">{{ getTotalPrice() }} lei</strong>
+        </div>
+      </div>
+    </div>
+    <div class="cart-page__address-delivery">
+      <strong class="section-name">Adresa de livrare</strong>
+      <div class="cart-page__address">
+        <button
+          class="cart-btn"
+          [class.active]="selectedAddress === 'house'"
+          (click)="selectAddress('house')">
+          <img src="assets/icon/house.svg" alt="">
+          <span>str. Solidaritatii nr.9, Chisinau</span>
+        </button>
+        <button
+          class="cart-btn"
+          [class.active]="selectedAddress === 'office'"
+          (click)="selectAddress('office')">
+          <img src="assets/icon/building.svg">
+          <span>bd. Stefan cel mare nr.135, etaj 3, Chisinau</span>
+        </button>
+      </div>
+    </div>
+    <div class="cart-page__method-payment">
+      <strong class="section-name">Metoda de plata</strong>
+      <div class="cart-page__address">
+        <button
+          class="cart-btn"
+          [class.active]="selectedPayment === 'online'"
+          (click)="selectPayment('online')">
+          <img src="assets/icon/banknote.svg" alt="">
+          <span>Plata online</span>
+        </button>
+        <button
+          class="cart-btn"
+          [class.active]="selectedPayment === 'mia'"
+          (click)="selectPayment('mia')">
+          <img src="assets/icon/smartphone.svg" alt="">
+          <span>Plata MIA</span>
+        </button>
+        <button
+          class="cart-btn"
+          [class.active]="selectedPayment === 'cash'"
+          (click)="selectPayment('cash')">
+          <img src="assets/icon/credit-card.svg" alt="">
+          <span>Cash/card la curier</span>
+        </button>
+      </div>
+    </div>
+    <div class="cart-page__place-order" *ngIf="canPlaceOrder">
+      <button class="send-order" (click)="placeOrder()">
+        <span>Plaseaza comanda</span>
+      </button>
+    </div>
+  </div>
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <p>Coșul este gol 😕</p>
+    </div>
+  </ng-template>
+</ion-content>

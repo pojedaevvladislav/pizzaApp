@@ -1,0 +1,141 @@
+ion-content {
+  --background: #F4F4F4;
+}
+
+.details-order__wrapper {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order__name-page {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: var(--pizza-name-color);
+}
+
+.details-order__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background: var(--white-color);
+  border-radius: 16px;
+}
+
+.order__number-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-number {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  color: var(--pizza-name-color);
+}
+
+.order-status__wrapper {
+  background: none;
+  border-radius: 16px;
+  border: 1px solid var(--yellow-status);
+  color: var(--yellow-status);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+  padding: 6px 12px;
+  width: auto;
+  height: 30px;
+  display: inline-block;
+}
+
+.order__data-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--description-color);
+}
+
+.order__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px dotted var(--border-color);
+  border-bottom:1px dotted var(--border-color);
+  padding: 8px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--pizza-name-color);
+}
+
+.order__price-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-price__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4px;
+}
+
+.order-total {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--pizza-name-color);
+}
+
+.order-price {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: var(--pizza-name-color);
+}
+
+.order-btn__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-btn {
+  background: none;
+  border: none;
+  width: 75px;
+  height: 24px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--red-color);
+}
+
+.icon-arrow-btn {
+  width: 16px;
+  height: 16px;
+}

@@ -1,16 +1,24 @@
-:host {
+ion-header {
   background: #F4F4F4;
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  height: 50px;
 }
 
-.nav-bar__wrapper {
-  padding: 16px 24px;
-}
+//.nav-bar__wrapper {
+//  padding: 16px 24px;
+//}
 
 .nav-bar__container {
   margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo-name {
@@ -59,3 +67,30 @@
   width: 24px;
   height: 24px;
 }
+
+.basket-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.basket-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.basket-counter {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #E00202;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

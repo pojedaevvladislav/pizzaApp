@@ -1,0 +1,36 @@
+<app-nav-bar ></app-nav-bar>
+<ion-content>
+  <div class="details-order__wrapper" *ngIf="orders.length > 0; else noOrders">
+    <h1 class="order__name-page">Comenzile mele</h1>
+    <div class="details-order__container" *ngFor="let order of orders">
+      <div class="order__number-status">
+        <strong class="order-number">Comanda #{{ order.orderId }}</strong>
+        <div class="order-status__wrapper">
+          <span class="order-status">{{ order.status }}</span>
+        </div>
+      </div>
+      <div class="order__data-address">
+        <span>{{ order.date | date:'dd MM yyyy, HH:mm' }}</span>
+        <span>{{ order.deliveryAddress }}</span>
+      </div>
+      <div class="order__items" *ngFor="let pizza of order.pizzas">
+        <span>{{ pizza.quantity }} * {{ pizza.name }}</span>
+      </div>
+      <div class="order__price-btn-wrapper">
+        <div class="order-price__wrapper">
+          <span class="order-total">Total:</span>
+          <strong class="order-price">{{ order.total }}</strong>
+        </div>
+        <div class="order-btn__wrapper">
+          <button class="order-btn" (click)="goToOrderDetailsPage(order.orderId)">Detalii</button>
+          <img class="icon-arrow-btn" src="assets/icon/arrow-right.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noOrders>
+    <div class="no-orders">
+      <p>Nu ai comenzile in cos.</p>
+    </div>
+  </ng-template>
+</ion-content>

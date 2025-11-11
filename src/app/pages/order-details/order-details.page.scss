@@ -1,0 +1,261 @@
+ion-content {
+  --background: #F4F4F4;
+  --color: #0A0A0A;
+}
+
+.details-order__wrapper {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.details-section__date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.details-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comanda-details {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.label-status {
+  background: none;
+  border-radius: 16px;
+  border: 1px solid var(--yellow-status);
+  color: var(--yellow-status);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  text-align: center;
+  padding: 6px 12px;
+  height: 30px;
+  width: auto;
+  display: inline-block;
+}
+
+.details-number-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.number-comanda {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.time-comanda {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #9FA2A8;
+  text-align: center;
+  padding: 7px 0;
+}
+
+.details-section__orders {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.details-pizza__info-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 16px;
+  background: #FFFFFF;
+}
+
+.details-pizza__photo {
+  width: 30%;
+  margin: 8px 16px;
+  background: #F4F4F4;
+  text-align: center;
+  border-radius: 16px;
+}
+
+.photo-pizza {
+  width: 92px;
+  height: 80px;
+}
+
+.details-pizza__info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 70%;
+  padding: 12px;
+}
+
+.details-pizza__name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.details-quantity-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.span-quantity {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+  background: #f4f4f4;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.span-price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.details-quantity-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 8px;
+
+  .left-span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: #0A0A0A;
+  }
+
+  .right-strong {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #0A0A0A;
+  }
+
+  .main-price {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0;
+    color: #E00202;
+  }
+}
+
+.items-produce {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-section__address-delivery {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.details-section-name {
+  padding: 16px 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #0A0A0A;
+}
+
+.details-address-delivery {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 60px;
+  border-radius: 16px;
+  background: #FFFFFF;
+  padding: 18px 12px;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.span-address {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #0A0A0A;
+  text-align: center;
+}
+
+.details-payment-method {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 60px;
+  border-radius: 16px;
+  background: #FFFFFF;
+  padding: 18px 12px;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.span-method {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #0A0A0A;
+  text-align: center;
+}
+
+.detail-section__btn-close {
+  padding-top: 55px;
+}
+
+.btn-close {
+  width: 100%;
+  height: 60px;
+  border-radius: 20px;
+  border: 2px solid #E00202;
+  padding: 13px 0;
+  text-align: center;
+}
+
+.details-close-btn {
+  background: none;
+  color: #E00202;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+}

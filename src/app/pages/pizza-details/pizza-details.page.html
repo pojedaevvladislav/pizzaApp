@@ -6,7 +6,7 @@
       </ion-button>
     </div>
     <div class="pizza-details__photo">
-      <img src="assets/images/broccolo-1.png" alt="">
+      <img [src]="pizza.imageFileName" alt="">
     </div>
     <div class="pizza-details__wrapper">
       <div class="pizza-details__label-wrapper">
@@ -55,7 +55,7 @@
           </ion-button>
         </div>
         <div class="pizza-details__price">
-          <ion-button class="pizza-details__add-to-cart">
+          <ion-button class="pizza-details__add-to-cart" (click)="addToCart()">
             <span>Adauga in cos | {{ totalPrice }}lei</span>
           </ion-button>
         </div>

@@ -1,0 +1,80 @@
+<app-nav-bar [showBackButton]="true" [showLogo]="false" [showCartButton]="false"></app-nav-bar>
+<ion-content>
+  <div class="details-order__wrapper" *ngIf="orderDetails; else loading">
+    <div class="details-section__date">
+      <div class="details-status">
+        <strong class="comanda-details">Detali comanda</strong>
+        <div class="label-status">
+          <span class="">{{ orderDetails.status }}</span>
+        </div>
+      </div>
+      <div class="details-number-date">
+        <strong class="number-comanda">{{ orderDetails.orderId }}</strong>
+        <span class="time-comanda">{{ orderDetails.date | date: 'dd MM yyyy, HH:mm' }}</span>
+      </div>
+    </div>
+    <div class="details-section__orders">
+      <div class="details-pizza__info-wrapper" *ngFor="let pizza of orderDetails.items">
+        <div class="details-pizza__photo">
+          <span></span>
+          <img class="photo-pizza" [src]="pizza.imageFileName" alt="{{ pizza.name }}">
+        </div>
+        <div class="details-pizza__info">
+          <div class="details-pizza__name">
+            <strong>{{ pizza.name }}</strong>
+          </div>
+          <div class="details-pizza__ingredients">
+            <span>{{ pizza.ingredients }}</span>
+          </div>
+          <div class="details-quantity-price">
+            <span class="span-weight">{{ pizza.weight }}g</span>
+            <span class="span-quantity">{{ pizza.quantity }}</span>
+            <span class="span-price">{{ pizza.price * pizza.quantity }} lei</span>
+          </div>
+        </div>
+      </div>
+      <div class="details-quantity-delivery">
+        <div class="details-produce items-produce">
+          <span class="left-span">Total produce:</span>
+          <strong class="right-strong">{{ orderDetails.total }} lei</strong>
+        </div>
+        <div class="details-delivery items-produce">
+          <span class="left-span">Livrare:</span>
+          <strong class="right-strong">0 lei</strong>
+        </div>
+        <div class="details-produce-delivery items-produce">
+          <span class="left-span">Total produce:</span>
+          <strong class="main-price">{{ orderDetails.total }} lei</strong>
+        </div>
+      </div>
+    </div>
+    <div class="details-section__address-delivery">
+      <div class="details-section-name">
+        <strong>Adresa de livrare</strong>
+      </div>
+      <div class="details-address-delivery">
+        <img src="assets/icon/house.svg">
+        <span class="span-address">{{ orderDetails.deliveryAddress }}</span>
+      </div>
+    </div>
+    <div class="details-section__payment-method">
+      <div class="details-section-name">
+        <strong>Metoda de plata</strong>
+      </div>
+      <div class="details-payment-method">
+        <img src="assets/icon/credit-card.svg">
+        <span class="span-method">{{ orderDetails.paymentMethod }}</span>
+      </div>
+    </div>
+    <div class="detail-section__btn-close" (click)="closeDetailsPage()">
+      <div class="btn-close">
+        <button class="details-close-btn">
+          Inchide
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+</ion-content>
